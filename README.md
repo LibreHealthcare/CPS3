@@ -7,6 +7,7 @@ Lecture de la CPS (Carte de Professionnel de Santé) version 3 sous GNU/Linux
 Il existe deux packages disponibles via ASIP Santé.
 
 Le premier est un installeur utilisant galss.ini
+
 Le second est un package rpm
 
 Nous avons étudié les deux possibilités. Nos tests étaient réalisés sous Debian 6 et Centos 6
