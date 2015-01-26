@@ -1,0 +1,3 @@
+LANG="fr_FR"
+SUPPORTED="fr_FR.UTF-8:fr_FR:fr:POSIX"
+SYSFONT="latarcyrheb-sun16"

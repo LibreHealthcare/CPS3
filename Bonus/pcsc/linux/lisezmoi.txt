@@ -1,0 +1,67 @@
+Instructions d'installation PC/SC sur Linux:
+********************************************
+
+AVERTISSEMENT:
+--------------
+  Les composants pc/sc externes fournis dans cette livraison ne le sont qu'à titre
+  d'exemple et il est conseillé de suivre les procédures d'installation de pcsclite
+  et des pilotes de lecteurs.
+
+Aide à l'installation PC/SC
+---------------------------
+1.Récupérer le pilote PC/SC pour Linux (redhat)
+    http://www.linuxnet.com/middleware/files/pcsc-lite-1.1.1-1-redhat.i386.rpm
+2.Installez le : rpm -ivh pcsc-lite-1.1.1-1-redhat.i386.rpm
+3.Ajoutez dans le fichier /etc/ld.so.conf la ligne : /usr/local/lib/
+4.Lancez dans le répertoire /sbin la commande ./ldconfig
+5.Vérifiez que l'exécutable pcscd se trouve dans /usr/local/sbin/pcscd
+6.Exécutez "./pcscd" et vérifiez sont chargement : ps -u root | grep pcscd
+7.Installez le pilote du lecteur PC/SC:
+  - pour gemplus GCR 410, celui de base proposé :
+        http://www.linuxnet.com/drivers/readers/files/gp-core-2.4.0.tar.gz
+  - pour oberthur OCR 150, celui du lecteur Omnikey 2020 :
+        http://www.omnikey.com/en/agreement.php?todo=agree&op=83&user=650bc6779dbcfabb6f70910487a78c0a
+	- pour activcard (ACTR-01), celui du lecteur scm scr 110 qui sera reconnu comme
+	  un schlumberger Reflex 72 :
+	      http://www.linuxnet.com/drivers/readers/files/scm_scr110-drv-0.5.0.tar.gz
+
+Vérifiez l'installation des lecteurs série dans le fichier /etc/readers.conf.
+Vérifiez le fonctionnement en installant l'outil pcsc-tools
+  (http://ludovic.rousseau.free.fr/softwares/pcsc-tools/pcsc-tools-1.2.4.tar.gz)
+  puis en le construisant (make + ./pcsc_scan).
+
+ATTENTION:
+**********
+
+Il ne faut pas oublier de démarrer le démon pcscd si il ne l'est pas déjà.
+
+Le fichier etc/reader.conf livré configure 2 lecteurs:
+ 'CPS_GCR' : un lecteur PCSC GEMPLUS GCR 410 série sur COM1
+ 'CPS_SCR' : un lecteur PCSC Schlumberger Reflex ou ActivCard ACTR01 sur COM2
+
+Problèmes couramment rencontrés:
+********************************
+
+- Le démon pcscd ne démarre pas:
+  1- vérifier le fichier /etc/reader.conf
+  2- vérifier la présence de la librairie libpcsclite.so dans /usr/local/lib
+  3- supprimer le répertoire /tmp/pcsc si il existe
+  
+- On n'atteint pas le lecteur PC/SC avec les outils CPS
+  1- vérifier que le démon pcscd est bien démarré
+  2- vérifier que le driver du lecteur est correctement installé
+  3- vérifier les couches PC/SC avec l'utilitaire /usr/local/sbin/pcsc_scan
+  4- vérifier le fichier galss.ini
+  5- vérifier la version de la librairie libgalsslux.so (3.08)
+
+- On n'atteint pas le lecteur PSS avec les outils CPS
+  1- vérifier les droits d'accès aux périphériques /etc/ttyS?
+     au besoin, exécuter la commande "chmod 666 /etc/ttyS?" (en mode root)
+  2- vérifier que le lecteur est bien connecté sur le port série COM1
+  3- vérifier le fichier galss.ini
+  4- vérifier la version de la librairie libgalsslux.so (>=3.08)
+
+- cppgclux ou cpgeslux provoquent une erreur au démarrage:
+    "impossible de trouver la librairie libncurses.so.4"
+ou  "impossible de trouver la librairie libpanel.so.4"
+  Copier les librairies fournies dans cette livraison dans /usr/lib

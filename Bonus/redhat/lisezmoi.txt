@@ -1,0 +1,33 @@
+**************************************************
+Afficher correctement les caracteres accentues des 
+applications CPS sous Linux RedHat.
+**************************************************
+
+***** ATTENTION : La langue francaise doit etre deja installe sur la machine *****
+
+Afin de pouvoir afficher les caracteres accentues correctement il faut
+desactiver l'affichage unicode.
+
+Desactiver l'unicode uniquement pour un utilisateur : 
+
+1 - Se logguer sur l'utilisateur en question.
+2 - Copier le fichier .i18n présent sur le CD dans le repertoire de l'utilisateur.
+    exemple : cp /mnt/cdrom/Bonus/redhat/.i18n $HOME
+3 - Fermer la session.
+4 - Specifier explicitement la langue : System default et surtout pas votre langue
+    sinon le systeme forcera l'affcihage en unicode.
+    Cette etape n'est valable uniquement que lors que l'on se loggue via X Window.
+5 - Se logguer.
+
+Desactiver l'unicode uniquement pour tous utilisateur :
+
+1 - Se logguer en tant qu'utilisateur "root"
+2 - Editer le fichier /etc/sysconfig/i18n
+3 - Modifier la varibale LANG en supprimant le suffix .UTF-8
+    exemple : LANG=fr_FR.UTF8 devient LANG=fr_FR
+4 - Sauvegarder le fichier.
+5 - Fermer la session
+6 - Specifier explicitement la langue : System default et surtout pas votre langue
+    sinon le systeme forcera l'affichage en unicode.
+    Cette etape n'est valable uniquement que lors que l'on se loggue via X Window.
+7 - Se logguer.
