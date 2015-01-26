@@ -4,6 +4,8 @@ Lecture de la CPS (Carte de Professionnel de Santé) version 3 sous GNU/Linux
 * Compatibilité Debian/Ubuntu (Debian 6, Debian 7)
 * Utilisation d'un lecteur de carte à puce compatible avec le standard PC/SC (testé avec Gemalto PC Twin Reader)
 
+D'après le script install.sh, cet installateur ne fonctionne qu'avec les version 32 bits des systèmes d'exploitation mentionnés.
+
 Il existe deux packages disponibles via ASIP Santé.
 
 Le premier est un installeur utilisant galss.ini
