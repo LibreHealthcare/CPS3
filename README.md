@@ -21,4 +21,4 @@ Il est possible d'installer le paquet libpcsc-tools et d'utiliser le logiciel pc
 
 Nous avons complété l'installeur fourni par l'ASIP Santé avec un script "install.sh" qui réalise une installation complète sous Debian 6 et 7 (fonctionne aussi avec Ubuntu 12.04 et devrait marcher "out of the box" avec Ubuntu 10.04). Le script fourni installe les paquets ci-dessus, utilise les bonnes librairies et crée les liens symboliques associés. Il reste après installation à charger la librairie /usr/local/galss/libcps_pkcs11_lux.so dans le navigateur en tant que périphérique de sécurité.
 
-Le support non officiel est assuré sur le sujet ["DMP dossier médical partage CPS carte professionnelle de santé Firefox" du forum ubuntu-fr](http://forum.ubuntu-fr.org/viewtopic.php?id=667121)
+Le support non officiel est assuré sur le [forum ubuntu-fr (sujet "DMP dossier médical partage CPS carte professionnelle de santé Firefox")](http://forum.ubuntu-fr.org/viewtopic.php?id=667121)
